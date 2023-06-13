@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,3 +32,4 @@ Route::get('/login', function () {
 Route::get('/signup', function () {
     return view('signup');
 });
+Route::get('/process_signup', [Controller::class, 'create']);
