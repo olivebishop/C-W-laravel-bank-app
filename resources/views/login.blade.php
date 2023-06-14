@@ -45,12 +45,11 @@
 </head>
 <body>
     <div class="input-form">
-        <h1>Signup</h1>
-        <form action="/process_signup">
+        <h1>Login</h1>
+        <form action="/process_login">
             <div><input type="text" name="username" placeholder="Enter username"></div>
-            <div><input type="email" name="email" placeholder="Enter email"></div>
             <div><input type="password" name="password" placeholder="Enter password"></div>
-            <div><input type="submit" name="signup" value="Sign Up"></div>
+            <div><input type="submit" name="login" value="Login"></div>
         </form>
     </div>
 </body>
