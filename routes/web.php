@@ -36,9 +36,4 @@ Route::get('/signup', function () {
 Route::get('/process_signup', [Controller::class, 'create']);
 Route::get('/process_login', [Controller::class, '#']);
 Route::get('/process_logout', [Controller::class, '#']);
-Route::get('/process_contact', [Controller::class, '#']);
-Route::get('/process_service', [Controller::class, '#']);
-Route::get('/process_about', [Controller::class, '#']);
-Route::get('/process_home', [Controller::class, '#']);
-Route::get('/process_index', [Controller::class, '#']);
 
