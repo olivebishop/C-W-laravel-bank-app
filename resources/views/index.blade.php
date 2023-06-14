@@ -50,6 +50,10 @@
                     <li><a href="/signup">Signup</a></li>
                 </ul>
             </nav>
+
+            <div>
+                <h2>This is the Home Page</h2>
+            </div>
         </div>
     </body>
 </html>

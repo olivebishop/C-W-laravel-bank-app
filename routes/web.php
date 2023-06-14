@@ -33,3 +33,4 @@ Route::get('/signup', function () {
     return view('signup');
 });
 Route::get('/process_signup', [Controller::class, 'create']);
+Route::get('/process_login', [Controller::class, '#']);
