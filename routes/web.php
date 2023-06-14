@@ -35,5 +35,6 @@ Route::get('/signup', function () {
 
 Route::get('/process_signup', [Controller::class, 'create']);
 Route::get('/process_login', [Controller::class, '#']);
+
 Route::get('/process_logout', [Controller::class, '#']);
 
