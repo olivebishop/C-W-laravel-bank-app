@@ -34,7 +34,7 @@
                 font-weight: 500;
             }
             nav ul li a:hover{
-                color: #f00;
+                color: #4caf50;
             }
             </style>
 
