@@ -40,16 +40,7 @@
     </head>
     <body>
         <div>
-            <nav>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/about">About</a></li>
-                    <li><a href="/services">Services</a></li>
-                    <li><a href="/contacts">Contacts</a></li>
-                    <li><a href="/login">Login</a></li>
-                    <li><a href="/signup">Signup</a></li>
-                </ul>
-            </nav>
+            @include('nav')
 
             <div>
                 <h2>This is the Home Page</h2>

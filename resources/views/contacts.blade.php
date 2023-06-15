@@ -6,6 +6,7 @@
     <title>Document</title>
 </head>
 <body>
+@include('nav')
     <h1>Contacts </h1>
 </body>
 </html>
