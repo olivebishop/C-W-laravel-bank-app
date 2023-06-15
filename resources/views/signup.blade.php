@@ -44,6 +44,7 @@
     </style>
 </head>
 <body>
+@include('nav')
     <div class="input-form">
         <h1>Signup</h1>
         <form action="/process_signup">
