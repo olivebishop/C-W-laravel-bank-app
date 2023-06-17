@@ -6,11 +6,13 @@
     <title>Document</title>
 </head>
 <body>
+    
     @extends('layouts.app')
 
     @section('content')
     <h1>Contacts </h1>
     <h1>This is main content</h1>
     @endsection
+
 </body>
 </html>
