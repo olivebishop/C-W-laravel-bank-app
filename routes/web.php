@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,8 +33,6 @@ Route::get('/signup', function () {
     return view('signup');
 });
 
-Route::get('/process_signup', [Controller::class, 'create']);
-Route::get('/process_login', [Controller::class, '#']);
+Route::post('/process_signup', [UserController::class, 'store']);
 
-Route::get('/process_logout', [Controller::class, '#']);
 

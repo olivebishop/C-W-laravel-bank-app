@@ -47,7 +47,8 @@
 @include('nav')
     <div class="input-form">
         <h1>Signup</h1>
-        <form action="/process_signup">
+        <form action="/process_signup" method="post">
+            @csrf
             <div><input type="text" name="username" placeholder="Enter username"></div>
             <div><input type="email" name="email" placeholder="Enter email"></div>
             <div><input type="password" name="password" placeholder="Enter password"></div>
