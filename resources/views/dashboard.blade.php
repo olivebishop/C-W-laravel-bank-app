@@ -7,7 +7,7 @@
     </head>
     <body>
         <div>
-            @include('nav')
+            @include('dashnav')
 
             <div>
                 <h2>This is the dashboard</h2>

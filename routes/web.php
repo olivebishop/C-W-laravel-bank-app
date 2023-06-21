@@ -40,4 +40,8 @@ Route::get('/dashboard', function () {
 Route::post('/process_signup', [UserController::class, 'store']);
 Route::post('/process_login', [LoginController::class, 'login']);
 
+Route::get('/logout', function () {
+    Auth::logout();
+    return redirect('/login');
+});
 
