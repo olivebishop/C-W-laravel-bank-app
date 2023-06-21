@@ -10,7 +10,7 @@
             @include('nav')
 
             <div>
-                <h2>This is the Home Page</h2>
+                <h2>This is the dashboard</h2>
             </div>
         </div>
     </body>

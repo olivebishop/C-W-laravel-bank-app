@@ -50,6 +50,7 @@
     <div class="input-form">
         <h1>Login</h1>
         <form action="/process_login" method="POST">
+            @csrf
             <div><input type="text" name="username" placeholder="Enter username"></div>
             <div><input type="password" name="password" placeholder="Enter password"></div>
             <div><input type="submit" name="login" value="Login"></div>
