@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Redirect;
 
 class UserController extends Controller
 {
@@ -17,6 +18,8 @@ class UserController extends Controller
             'password' => $user['password'],
         ]);
         $newUser->save();
+
+        return redirect('/login');
     }
 }
 
