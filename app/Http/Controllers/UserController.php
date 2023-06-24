@@ -19,7 +19,7 @@ class UserController extends Controller
         ]);
         $newUser->save();
 
-        return redirect('/login');
+        return redirect('login')->with('success', 'Signup successfull.');
     }
 }
 

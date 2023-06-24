@@ -49,9 +49,9 @@
         <h1>Signup</h1>
         <form action="/process_signup" method="post">
             @csrf
-            <div><input type="text" name="username" placeholder="Enter username"></div>
-            <div><input type="email" name="email" placeholder="Enter email"></div>
-            <div><input type="password" name="password" placeholder="Enter password"></div>
+            <div><input type="text" name="username" placeholder="Enter username" required></div>
+            <div><input type="email" name="email" placeholder="Enter email" required></div>
+            <div><input type="password" name="password" placeholder="Enter password" required></div>
             <div><input type="submit" name="signup" value="Sign Up"></div>
         </form>
     </div>

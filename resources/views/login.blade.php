@@ -47,6 +47,12 @@
 
 @include('nav')
 
+@if(session()->has('success'))
+  <div>
+    {{ session('success') }}
+  </div>
+@endif
+
     <div class="input-form">
         <h1>Login</h1>
         <form action="/process_login" method="POST">
