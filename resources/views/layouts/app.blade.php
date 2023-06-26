@@ -62,8 +62,9 @@
     </div>
 
     @yield('content')
-
-    @yield('sidebar')
+    @yield('errors')
+    @yield('success')
+  
 
     <footer>
         <h2>This is the footer</h2>
