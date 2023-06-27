@@ -61,18 +61,20 @@
                 <ul>
                     <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
                     <li><a href="{{ route('dashboard.profile') }}">Profile</a></li>
-                    <li><a href="">Apply Loan</a></li>
-                    <li><a href="">Reports</a></li>
-                    <li><a href="">Settings</a></li>
+                    <li><a href="{{ route('dashboard.loans') }}">Apply Loan</a></li>
+                    <li><a href="{{ route('dashboard.reports') }}">Reports</a></li>
+                    <li><a href="{{ route('dashboard.settings') }}">Settings</a></li>
                     <li><a href="/logout">Logout</a></li>
                 </ul>
             </nav>
         </div>
         <div>
+            @if(Request::is('dashboard'))
+                    <h1>Dashboard</h1>
+            @endif 
             <div class="main-content">
                 @yield('dashboard-content')
                 @yield('message')
-                <h1>Dashboard</h1>
             </div>
         </div>
     </div>
