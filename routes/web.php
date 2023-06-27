@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
-
+use App\Http\Controllers\LoanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,7 +48,7 @@ Route::post('/process_signup', [UserController::class, 'store']);
 Route::post('/process_login', [LoginController::class, 'login']);
 
 Route::get('/dashboard/profile', [DashboardController::class, 'profile'])->middleware('auth')->name('dashboard.profile');
-Route::get('/dashboard/loans', [DashboardController::class, 'loans'])->middleware('auth')->name('dashboard.loans');
+
 Route::get('/dashboard/reports', [DashboardController::class, 'reports'])->middleware('auth')->name('dashboard.reports');
 Route::get('/dashboard/settings', [DashboardController::class, 'settings'])->middleware('auth')->name('dashboard.settings');
 Route::patch('/profile/update', [DashboardController::class, 'update_profile'])->middleware('auth')->name('profile.update');
@@ -58,3 +58,7 @@ Route::get('/logout', function () {
     return redirect('/login');
 });
 
+Route::get('/dashboard/loans', function () {
+    return view('dashboard.loans');
+})->middleware('auth')->name('dashboard.loans');
+Route::post('/apply_loan', [LoanController::class, 'store'])->middleware('auth')->name('apply_loan');
