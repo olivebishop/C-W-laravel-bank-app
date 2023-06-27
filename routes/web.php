@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\DashboardController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -35,14 +37,18 @@ Route::get('/signup', function () {
     return view('signup');
 });
 
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
-    });
+    })->name('dashboard');
 });
 
 Route::post('/process_signup', [UserController::class, 'store']);
 Route::post('/process_login', [LoginController::class, 'login']);
+
+Route::get('/dashboard/profile', [DashboardController::class, 'profile'])->middleware('auth')->name('dashboard.profile');
+Route::patch('/profile/update', [DashboardController::class, 'update_profile'])->middleware('auth')->name('profile.update');
 
 Route::get('/logout', function () {
     Auth::logout();

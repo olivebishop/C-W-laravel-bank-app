@@ -43,10 +43,11 @@
     <div>
         <nav>
             <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/services">Services</a></li>
-                <li><a href="/contacts">Contacts</a></li>
+                <li><a href="/dashboard">Dashboard</a></li>
+                <li><a href="/dashboard/profile">Profile</a></li>
+                <li><a href="#">Apply Loan</a></li>
+                <li><a href="#">Reports</a></li>
+                <li><a href="#">Settings</a></li>
                 <li><a href="/logout">Logout</a></li>
             </ul>
         </nav>
