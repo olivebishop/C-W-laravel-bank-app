@@ -49,8 +49,6 @@ Route::post('/process_login', [LoginController::class, 'login']);
 
 Route::get('/dashboard/profile', [DashboardController::class, 'profile'])->middleware('auth')->name('dashboard.profile');
 
-Route::get('/dashboard/reports', [DashboardController::class, 'reports'])->middleware('auth')->name('dashboard.reports');
-Route::get('/dashboard/settings', [DashboardController::class, 'settings'])->middleware('auth')->name('dashboard.settings');
 Route::patch('/profile/update', [DashboardController::class, 'update_profile'])->middleware('auth')->name('profile.update');
 
 Route::get('/logout', function () {
@@ -62,3 +60,10 @@ Route::get('/dashboard/loans', function () {
     return view('dashboard.loans');
 })->middleware('auth')->name('dashboard.loans');
 Route::post('/apply_loan', [LoanController::class, 'store'])->middleware('auth')->name('apply_loan');
+
+Route::get('/dashboard/reports', [LoanController::class, 'loan'])->middleware('auth')->name('dashboard.reports');
+Route::get('/dashboard/settings', [DashboardController::class, 'settings'])->middleware('auth')->name('dashboard.settings');
+
+Route::put('update/loan/{loan}', [LoanController::class, 'update'])->name('loan.update');
+
+Route::delete('delete/loan/{loan}', [LoanController::class, 'destroy'])->name('loan.delete');

@@ -39,6 +39,15 @@
             border-radius: 5px;
             margin-bottom: 10px;
         }
+        .form-container input[type="email"] {
+            width: 95%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+
         .form-container input[type="number"] {
             width: 95%;
             padding: 10px;
@@ -68,6 +77,11 @@
              margin-right: auto;
              margin-left: auto;
         }
+        .input-error {
+            text-align: center;
+            color: red;
+            font-size: 12px;
+        }
     </style>
 </head>
 <body>
@@ -85,16 +99,38 @@
             <form action="{{route('apply_loan')}}" method="POST">
                 @csrf
                 <div>
-                    <label for="username">Username:</label>
-                    <input type="text" id="username" name="username" >
+                    <input type="hidden" name="id" value="{{Auth::user()->id}}">
                 </div>
                 <div>
-                    <label for="email">Email:</label>
-                    <input type="text" id="email" name="email"  >
+                    <input type="text" name="username" value="{{Auth::user()->username}}" readonly>
                 </div>
                 <div>
-                    <label for="amount">Loan Amount:</label>
-                    <input type="number" id="amount" name="amount">
+                    <input type="email" name="email" value="{{Auth::user()->email}}" readonly>
+                </div>
+                <div>
+                    <input type="number" name="phone" placeholder="Enter phone number" value="{{old('phone')}}" required>
+                    <span class="input-error">
+                        @error('phone')
+                            {{ $message }}
+                        @enderror
+                    </span>
+                </div>
+                <div>
+                    <input type="number" name="amount" placeholder="Enter desired amount" value="{{old('amount')}}" required>
+                    <span class="input-error">
+                        @error('amount')
+                            {{ $message }}
+                        @enderror
+                    </span>
+                </div>
+                <div>
+                    <input type="text" name="purpose" placeholder="Enter purpose for loan" value="{{old('purpose')}}" required>
+                    <span class="input-error">
+                        @error('purpose')
+                            {{ $message }}
+                        @enderror
+                    </span>
+                </div>
                 <div>
                     <input type="submit" name="apply" value="Apply">
                 </div>

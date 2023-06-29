@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('loans', function (Blueprint $table) {
             $table->id();
-            $table->string('username');
-            $table->string('email');
-            $table->integer('amount');
+            $table->foreignId('user_id')->constrained('users');
+            $table->string('phone');
+            $table->decimal('amount', 8, 2);
+            $table->text('purpose');
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      */
