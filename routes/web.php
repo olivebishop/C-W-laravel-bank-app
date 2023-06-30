@@ -6,6 +6,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoanController;
 use App\Models\Loan;
+use App\Http\Controllers\PasswordController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -67,4 +69,5 @@ Route::group(['middleware' => ['auth']], function(){
     Route::put('update/loan/{loan}', [LoanController::class, 'update'])->name('loan.update');
     Route::delete('delete/loan/{loan}', [LoanController::class, 'destroy'])->name('loan.delete');
     Route::get('/dashboard/settings', [DashboardController::class, 'settings'])->name('dashboard.settings');
+    Route::post('/password/update', [PasswordController::class, 'update'])->name('password.update');
 });

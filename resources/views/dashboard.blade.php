@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+               <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -71,7 +72,8 @@
         </div>
         <div class="main-content">
             @if(Request::is('dashboard'))
-                <h1>Dashboard</h1>
+                <h1 style="text-align: center;">User Dashboard</h1>
+                <p>FASTEST LOAN APP </p>
             @endif 
             @yield('dashboard-content')
             @yield('message')

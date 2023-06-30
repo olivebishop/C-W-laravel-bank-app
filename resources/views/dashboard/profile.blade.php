@@ -52,7 +52,7 @@
         }
     </style>
 </head>
-<body>
+<body style="background-color: grey;">
 @extends('dashboard')
     @section('message')
         @if (session('success'))

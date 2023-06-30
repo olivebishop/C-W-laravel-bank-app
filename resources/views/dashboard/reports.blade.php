@@ -77,7 +77,7 @@
         }
     </style>
 </head>
-<body>
+<body style="background-color: grey;">
     @extends('dashboard')
 
     @section('dashboard-content')
