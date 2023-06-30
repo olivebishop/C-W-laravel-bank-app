@@ -62,7 +62,8 @@ class LoanController extends Controller
         $request->validate([
             'phone' => 'required|numeric|digits_between:10,10',
             'amount' => 'required|numeric|min:50|max:500',
-            'purpose' => 'required|min:10|max:50|regex:/^[a-zA-Z\s.,!?]+$/',
+            'purpose' => 'required|min:10|max:50|regex:/^[a-zA-Z\s.,!?\'-]+$/',
+
         ], [
             'phone.required' => 'Phone number is required',
             'phone.numeric' => 'Phone number must be numeric',

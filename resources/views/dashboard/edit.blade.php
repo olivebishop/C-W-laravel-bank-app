@@ -69,6 +69,11 @@
             margin-bottom: 10px;
             height: 100px;
         }
+        .input-error {
+            text-align: center;
+            color: red;
+            font-size: 12px;
+        }
     </style>
 </head>
 <body>
@@ -88,14 +93,23 @@
 
         <h1>Edit Loan Request Record</h1>
 
+        <div>
         <label for="phone">Phone No</label>
         <input type="number" name="phone" id="phone" value="{{ $loan->phone }}"><br>
+        <span class="input-error">@error('phone'){{ $message }}@enderror</span>
+        </div>
 
+        <div>
         <label for="amount">Amount</label>
         <input type="number" name="amount" id="amount" value="{{ $loan->amount }}"><br>
+        <span class="input-error">@error('amount'){{ $message }}@enderror</span>
+        </div>
 
+        <div>
         <label for="purpose">Purpose</label>
-        <textarea name="purpose" id="purpose" placeholder="Explain the purpose of the loan." value="{{ $loan->purpose }}"></textarea><br>
+        <textarea name="purpose" id="purpose" placeholder="Explain the purpose of the loan.">{{ $loan->purpose }}</textarea><br>
+        <span class="input-error">@error('purpose'){{ $message }}@enderror</span>
+        </div>
 
         <button type="submit">Update</button>
     </form>
