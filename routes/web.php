@@ -5,7 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoanController;
-
+use App\Models\Loan;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,33 +37,34 @@ Route::get('/signup', function () {
     return view('signup');
 });
 
-
-Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});
-
 Route::post('/process_signup', [UserController::class, 'store']);
 Route::post('/process_login', [LoginController::class, 'login']);
-
-Route::get('/dashboard/profile', [DashboardController::class, 'profile'])->middleware('auth')->name('dashboard.profile');
-
-Route::patch('/profile/update', [DashboardController::class, 'update_profile'])->middleware('auth')->name('profile.update');
 
 Route::get('/logout', function () {
     Auth::logout();
     return redirect('/login');
 });
 
-Route::get('/dashboard/loans', function () {
-    return view('dashboard.loans');
-})->middleware('auth')->name('dashboard.loans');
-Route::post('/apply_loan', [LoanController::class, 'store'])->middleware('auth')->name('apply_loan');
+// Routes using auth middleware //
+Route::group(['middleware' => ['auth']], function(){
 
-Route::get('/dashboard/reports', [LoanController::class, 'loan'])->middleware('auth')->name('dashboard.reports');
-Route::get('/dashboard/settings', [DashboardController::class, 'settings'])->middleware('auth')->name('dashboard.settings');
+    //view routes//
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+    Route::get('/dashboard/loans', function () {
+        return view('dashboard.loans');
+    })->name('dashboard.loans');
+    Route::get('/dashboard/edit/{loan}', function (Loan $loan) {
+        return view('dashboard.edit', compact('loan'));
+    })->name('dashboard.edit');
 
-Route::put('update/loan/{loan}', [LoanController::class, 'update'])->name('loan.update');
-
-Route::delete('delete/loan/{loan}', [LoanController::class, 'destroy'])->name('loan.delete');
+    //action routes//
+    Route::get('/dashboard/profile', [DashboardController::class, 'profile'])->name('dashboard.profile');
+    Route::patch('/profile/update', [DashboardController::class, 'update_profile'])->name('profile.update');
+    Route::post('/apply_loan', [LoanController::class, 'store'])->middleware('auth')->name('apply_loan');
+    Route::get('/dashboard/reports', [LoanController::class, 'loan'])->name('dashboard.reports');
+    Route::put('update/loan/{loan}', [LoanController::class, 'update'])->name('loan.update');
+    Route::delete('delete/loan/{loan}', [LoanController::class, 'destroy'])->name('loan.delete');
+    Route::get('/dashboard/settings', [DashboardController::class, 'settings'])->name('dashboard.settings');
+});

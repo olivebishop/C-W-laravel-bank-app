@@ -82,6 +82,13 @@
             color: red;
             font-size: 12px;
         }
+        textarea {
+            width: 95%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
@@ -124,7 +131,7 @@
                     </span>
                 </div>
                 <div>
-                    <input type="text" name="purpose" placeholder="Enter purpose for loan" value="{{old('purpose')}}" required>
+                    <textarea name="purpose" id="" cols="30" rows="10" placeholder="Explain the purpose of the loan." value="{{old('purpose')}}"></textarea>
                     <span class="input-error">
                         @error('purpose')
                             {{ $message }}

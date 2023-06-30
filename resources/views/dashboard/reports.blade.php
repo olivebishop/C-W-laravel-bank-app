@@ -5,27 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f1f1f1;
-        }
-
         h1 {
             margin-top: 0;
             color: #000;
             margin-left: 10px;
+            background-color: #f9f9f9;
         }
 
         h4 {
             margin-top: 0;
             color: #666;
+            background-color: #f9f9f9;
             margin-left: 10px;
         }
 
         table {
             width: 100%;
-            border-collapse: collapse;
             margin-bottom: 20px;
+        }
+
+        table td:nth-child(4) {
+            word-break: break-word;
+            max-width: 350px;
         }
 
         table th,
@@ -59,30 +60,36 @@
             color: white;
             padding: 14px;
             border-radius: 10px;
-             max-width: 400px;
-             margin-top: 5px;
-             margin-bottom: 0;
-             margin-right: auto;
-             margin-left: auto;
+            max-width: 400px;
+            margin-top: 5px;
+            margin-bottom: 0;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        .table-container {
+            width: fit-content;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            justify-content: center;
         }
     </style>
-
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
     @extends('dashboard')
 
     @section('dashboard-content')
-        <h1>Reports</h1><br>
+        <h1>Reports</h1>
         <h4>Applied Loans</h4>
         @if (Session::has('success'))
             <div class="success-message">
                 {{Session::get('success')}}
             </div>
         @endif
-        <table class="table">
+        <div class="table-container">
+        <table>
             <thead>
                 <tr>
                     <th>Loan ID</th>
@@ -100,7 +107,7 @@
                         <td>{{$loan->amount}}</td>
                         <td>{{$loan->purpose}}</td>
                         <td>
-                            <button class="edit-btn" data-bs-toggle="modal" data-bs-target="#editModal{{$loan->id}}">Edit</button>
+                            <a class="edit-btn" href="{{ route('dashboard.edit', $loan->id) }}">Edit</a>
                             <form action="{{ route('loan.delete', $loan->id) }}" method="POST" style="display: inline-block;">
                                 @csrf
                                 @method('DELETE')
@@ -108,40 +115,10 @@
                             </form>
                         </td>
                     </tr>
-
-                    <!-- Edit pop-up Modal -->
-                    <div class="modal fade" id="editModal{{$loan->id}}" tabindex="-1" aria-labelledby="editModal{{$loan->id}}Label" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="editModal{{$loan->id}}Label">Edit Loan</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <form action="{{ route('loan.update', $loan->id) }}" method="POST">
-                                        @csrf
-                                        @method('PUT')
-                                        <div class="mb-3">
-                                            <label for="phone">Phone No</label>
-                                            <input type="text" name="phone" id="phone" value="{{$loan->phone}}">
-                                        </div>
-                                        <div class="mb-3 ">
-                                            <label for="purpose">Purpose</label>
-                                            <input type="text" name="purpose" id="purpose" value="{{$loan->purpose}}">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="amount">Amount</label>
-                                            <input type="text" name="amount" id="amount" value="{{$loan->amount}}">
-                                        </div>
-                                        <button type="submit" class="btn btn-primary">Update</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 @endforeach
             </tbody>
         </table>
+        </div>
 
         <script>
             function confirmDelete() {
